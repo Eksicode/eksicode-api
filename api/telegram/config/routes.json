@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/telegrams",
+      "handler": "Telegram.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/telegrams/count",
+      "handler": "Telegram.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/telegrams/:id",
+      "handler": "Telegram.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/telegrams",
+      "handler": "Telegram.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/telegrams/:id",
+      "handler": "Telegram.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/telegrams/:id",
+      "handler": "Telegram.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

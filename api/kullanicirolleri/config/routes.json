@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/kullanicirolleris",
+      "handler": "Kullanicirolleri.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kullanicirolleris/count",
+      "handler": "Kullanicirolleri.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kullanicirolleris/:id",
+      "handler": "Kullanicirolleri.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/kullanicirolleris",
+      "handler": "Kullanicirolleri.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/kullanicirolleris/:id",
+      "handler": "Kullanicirolleri.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/kullanicirolleris/:id",
+      "handler": "Kullanicirolleri.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

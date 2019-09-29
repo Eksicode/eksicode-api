@@ -1,0 +1,59 @@
+{
+  "connection": "default",
+  "collectionName": "kaynaklars",
+  "info": {
+    "name": "kaynaklar",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "doc_name": {
+      "default": "",
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "doc_creator": {
+      "default": "",
+      "type": "integer"
+    },
+    "approved": {
+      "default": false,
+      "type": "boolean"
+    },
+    "approving_user": {
+      "default": "",
+      "type": "integer"
+    },
+    "tags": {
+      "default": "",
+      "type": "string"
+    },
+    "comment": {
+      "default": "",
+      "type": "text"
+    },
+    "doc_creator_tg": {
+      "default": "",
+      "type": "integer"
+    },
+    "doc_link": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "lat_edit": {
+      "default": "",
+      "type": "date"
+    },
+    "doc_tg_ch": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}
