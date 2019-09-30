@@ -7,12 +7,12 @@ services:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     env_file:
      - ./backend/.env
-    # environment:
-    #   - MYSQL_ROOT_PASSWORD=eksicode
-    #   - MYSQL_DATABASE=eksicode
-    #   - MYSQL_USER=eksicode
-    #   - MYSQL_PASSWORD=eksicode
-    #   - TZ=Europe/Istanbul
+    environment:
+      - MYSQL_ROOT_PASSWORD=eksicode
+      - MYSQL_DATABASE=eksicode
+      - MYSQL_USER=eksicode
+      - MYSQL_PASSWORD=eksicode
+      - TZ=Europe/Istanbul
     networks:
       - eksicode_nw
     healthcheck:
@@ -26,15 +26,13 @@ services:
     build: ./backend
     volumes:
       - ./backend:/var/www
-    env_file:
-     - ./backend/.env
-    # environment:
-    #   - DB_CONNECTION=mysql
-    #   - DB_HOST=database
-    #   - DB_PORT=3306
-    #   - DB_DATABASE=eksicode
-    #   - DB_USERNAME=root
-    #   - DB_PASSWORD=eksicode
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=database
+      - DB_PORT=3306
+      - DB_DATABASE=eksicode
+      - DB_USERNAME=root
+      - DB_PASSWORD=eksicode
     links:
       - database
     depends_on:
@@ -69,16 +67,12 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/html:/var/www/html
-    depends_on:
-      - backend
     restart: on-failure
     ports:
       - "80:80"
       - "443:443"
     networks:
       - eksicode_nw
-    links:
-      - backend
 
 volumes:
   database:
