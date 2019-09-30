@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "eksicodeBackend",
+            "script": "npm",
+            "args" : "start"
+        }
+    ]
+}

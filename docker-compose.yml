@@ -1,0 +1,90 @@
+version: '3'
+services:
+  database:
+    container_name: eksicodeDatabase
+    image: mysql:5.7.26
+    volumes:
+      - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
+    env_file:
+     - ./backend/.env
+    # environment:
+    #   - MYSQL_ROOT_PASSWORD=eksicode
+    #   - MYSQL_DATABASE=eksicode
+    #   - MYSQL_USER=eksicode
+    #   - MYSQL_PASSWORD=eksicode
+    #   - TZ=Europe/Istanbul
+    networks:
+      - eksicode_nw
+    healthcheck:
+            test: ["CMD","/usr/bin/mysql", "--user=eksicode", "--password=eksicode", "--execute", "\"SHOW DATABASES;\""]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+
+  backend:
+    container_name: eksicodeBackend
+    build: ./backend
+    volumes:
+      - ./backend:/var/www
+    env_file:
+     - ./backend/.env
+    # environment:
+    #   - DB_CONNECTION=mysql
+    #   - DB_HOST=database
+    #   - DB_PORT=3306
+    #   - DB_DATABASE=eksicode
+    #   - DB_USERNAME=root
+    #   - DB_PASSWORD=eksicode
+    links:
+      - database
+    depends_on:
+      - database
+    restart: on-failure
+    networks:
+      - eksicode_nw
+
+  phpmyadmin:
+    container_name: eksicodePma
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_USER: eksicode
+      MYSQL_PASSWORD: eksicode
+      PMA_HOST: database
+    ports:
+      - "8004:80"
+    links:
+      - database
+    depends_on:
+      - database
+    networks:
+      - eksicode_nw
+
+  web:
+    container_name: eksicodeWeb
+    image: nginx:alpine
+    environment:
+      - TZ=Europe/Istanbul
+      - PROTOCOL=HTTP
+    privileged: true
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/html:/var/www/html
+    depends_on:
+      - backend
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - eksicode_nw
+    links:
+      - backend
+
+volumes:
+  database:
+  backend:
+  web:
+  phpmyadmin:
+
+networks:
+  eksicode_nw:
