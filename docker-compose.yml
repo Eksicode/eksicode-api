@@ -49,11 +49,13 @@ services:
     env_file:
       - eksicode.env
     environment:
-      - MYSQL_USER=eksicode
-      - MYSQL_PASSWORD=WBmdjyNgF8P4mKat
-      - PMA_HOST=database
+      - PMA_PORT:$${DB_PORT}
+      - PMA_HOST:$${DB_HOST}
+      - PMA_USER:$${DB_USERNAME}
+      - PMA_PASSWORD:$${DB_PASSWORD}
     ports:
       - "8004:80"
+    restart: always
     links:
       - database
     depends_on:
