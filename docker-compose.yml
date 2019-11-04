@@ -6,12 +6,12 @@ services:
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     env_file:
-      - ./eksicode.env
+      - eksicode.env
     environment:
-      - MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE: ${MYSQL_DATABASE}
-      - MYSQL_USER: ${MYSQL_USER}
-      - MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD:${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE:${MYSQL_DATABASE}
+      - MYSQL_USER:${MYSQL_USER}
+      - MYSQL_PASSWORD:${MYSQL_PASSWORD}
       - TZ=Europe/Istanbul
     networks:
       - eksicode_nw
@@ -27,14 +27,14 @@ services:
     volumes:
       - ./backend:/var/www
     env_file:
-      - ./eksicode.env
+      - eksicode.env
     environment:
-      - DB_CONNECTION: ${DB_CONNECTION}
-      - DB_HOST: ${DB_HOST}
-      - DB_PORT: ${DB_PORT}
-      - DB_DATABASE: ${DB_DATABASE}
-      - DB_USERNAME: ${DB_USERNAME}
-      - DB_PASSWORD: ${DB_PASSWORD}
+      - DB_CONNECTION:${DB_CONNECTION}
+      - DB_HOST:${DB_HOST}
+      - DB_PORT:${DB_PORT}
+      - DB_DATABASE:${DB_DATABASE}
+      - DB_USERNAME:${DB_USERNAME}
+      - DB_PASSWORD:${DB_PASSWORD}
     links:
       - database
     depends_on:
