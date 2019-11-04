@@ -6,7 +6,7 @@ services:
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     networks:
       - eksicode_nw
     healthcheck:
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./backend:/var/www
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     links:
       - database
     depends_on:
@@ -34,7 +34,7 @@ services:
     container_name: eksicodePma
     image: phpmyadmin/phpmyadmin
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     ports:
       - "8004:80"
     links:
