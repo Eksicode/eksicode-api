@@ -53,8 +53,8 @@ services:
       - MYSQL_PASSWORD:$${DB_PASSWORD}
       - PMA_HOST:$${PMA_HOST}
     ports:
-      - "80:8004"
-      - "443:8004"
+      - "8004:80"
+      - "8004:443"
     links:
       - database
     depends_on:
