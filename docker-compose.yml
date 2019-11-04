@@ -8,10 +8,10 @@ services:
     env_file:
       - eksicode.env
     environment:
-      - MYSQL_ROOT_PASSWORD:"${MYSQL_ROOT_PASSWORD}"
-      - MYSQL_DATABASE:"${MYSQL_DATABASE}"
-      - MYSQL_USER:"${MYSQL_USER}"
-      - MYSQL_PASSWORD:"${MYSQL_PASSWORD}"
+      - MYSQL_ROOT_PASSWORD:$${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE:$${MYSQL_DATABASE}
+      - MYSQL_USER:$${MYSQL_USER}
+      - MYSQL_PASSWORD:$${MYSQL_PASSWORD}
       - TZ=Europe/Istanbul
     networks:
       - eksicode_nw
@@ -29,12 +29,12 @@ services:
     env_file:
       - eksicode.env
     environment:
-      - DB_CONNECTION:"${DB_CONNECTION}"
-      - DB_HOST:"${DB_HOST}"
-      - DB_PORT:"${DB_PORT}"
-      - DB_DATABASE:"${DB_DATABASE}"
-      - DB_USERNAME:"${DB_USERNAME}"
-      - DB_PASSWORD:"${DB_PASSWORD}"
+      - DB_CONNECTION:$${DB_CONNECTION}
+      - DB_HOST:$${DB_HOST}
+      - DB_PORT:$${DB_PORT}
+      - DB_DATABASE:$${DB_DATABASE}
+      - DB_USERNAME:$${DB_USERNAME}
+      - DB_PASSWORD:$${DB_PASSWORD}
     links:
       - database
     depends_on:
@@ -49,9 +49,9 @@ services:
     env_file:
       - ./eksicode.env
     environment:
-      - MYSQL_USER:"${DB_USERNAME}"
-      - MYSQL_PASSWORD:"${DB_PASSWORD}"
-      - PMA_HOST:"${PMA_HOST}"
+      - MYSQL_USER:$${DB_USERNAME}
+      - MYSQL_PASSWORD:$${DB_PASSWORD}
+      - PMA_HOST:$${PMA_HOST}
     ports:
       - "8004:8004"
     links:
