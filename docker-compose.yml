@@ -6,7 +6,7 @@ services:
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     environment:
-      MYSQL_ROOT_PASSWORD=]~HBz=8Cgc9U,RR}
+      MYSQL_ROOT_PASSWORD=JjYKNLZ36NdujMaZ
       MYSQL_DATABASE=eksicode
       MYSQL_USER=eksicode
       MYSQL_PASSWORD=WBmdjyNgF8P4mKat
