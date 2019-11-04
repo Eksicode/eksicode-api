@@ -16,7 +16,7 @@ services:
     networks:
       - eksicode_nw
     healthcheck:
-            test: ["CMD","/usr/bin/mysql", "--user=$${MYSQL_USER}", "--password=$${MYSQL_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
+            test: ["CMD","/usr/bin/mysql", "--user=$${DB_USERNAME}", "--password=$${DB_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
             interval: 30s
             timeout: 10s
             retries: 5
