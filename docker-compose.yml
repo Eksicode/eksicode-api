@@ -47,10 +47,10 @@ services:
     container_name: eksicodePma
     image: phpmyadmin/phpmyadmin
     env_file:
-      - ./eksicode.env
+      - eksicode.env
     environment:
-      - MYSQL_USER:$${DB_USERNAME}
-      - MYSQL_PASSWORD:$${DB_PASSWORD}
+      - MYSQL_USER:$${MYSQL_USER}
+      - MYSQL_PASSWORD:$${MYSQL_PASSWORD}
       - PMA_HOST:$${PMA_HOST}
     ports:
       - "8004:80"
