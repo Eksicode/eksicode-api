@@ -6,7 +6,7 @@ services:
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     environment:
       - MYSQL_ROOT_PASSWORD:$${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE:$${MYSQL_DATABASE}
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./backend:/var/www
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     environment:
       - DB_CONNECTION:$${DB_CONNECTION}
       - DB_HOST:$${DB_HOST}
@@ -47,7 +47,7 @@ services:
     container_name: eksicodePma
     image: phpmyadmin/phpmyadmin
     env_file:
-      - eksicode.env
+      - ./eksicode.env
     environment:
       - PMA_PORT:$${DB_PORT}
       - PMA_HOST:$${DB_HOST}
