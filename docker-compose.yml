@@ -47,7 +47,7 @@ services:
       MYSQL_PASSWORD: eksicode
       PMA_HOST: database
     ports:
-      - "8004:80"
+      - "8004"
     restart: always
     links:
       - database
