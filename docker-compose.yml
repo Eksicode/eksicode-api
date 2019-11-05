@@ -9,11 +9,6 @@ services:
       - ./eksicode.env
     networks:
       - eksicode_nw
-    healthcheck:
-            test: ["CMD","/usr/bin/mysql", "--user:$${process.env.DB_USERNAME}", "--password:$${process.env.DB_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
-            interval: 30s
-            timeout: 10s
-            retries: 5
 
   backend:
     container_name: eksicodeBackend
