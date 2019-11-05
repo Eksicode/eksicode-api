@@ -7,10 +7,16 @@ services:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
     env_file:
       - ./eksicode.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=$${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=$${MYSQL_USER}
+      - MYSQL_PASSWORD=$${MYSQL_PASSWORD}
+      - TZ=Europe/Istanbul
     networks:
       - eksicode_nw
     healthcheck:
-            test: ["CMD","/usr/bin/mysql", "--user=eksicode", "--password=eksicode", "--execute", "\"SHOW DATABASES;\""]
+            test: ["CMD","/usr/bin/mysql", "--user=root", "--password=$${MYSQL_ROOT_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
             interval: 30s
             timeout: 10s
             retries: 5
@@ -22,6 +28,13 @@ services:
       - ./backend:/var/www
     env_file:
       - ./eksicode.env
+    environment:
+      - DB_CONNECTION=$${DB_CONNECTION}
+      - DB_HOST=$${DB_HOST}
+      - DB_PORT=$${DB_PORT}
+      - DB_DATABASE=$${DB_DATABASE}
+      - DB_USERNAME=root
+      - DB_PASSWORD=$${MYSQL_ROOT_PASSWORD}
     links:
       - database
     depends_on:
@@ -35,8 +48,12 @@ services:
     image: phpmyadmin/phpmyadmin
     env_file:
       - ./eksicode.env
+    environment:
+      MYSQL_USER: $${MYSQL_USER}
+      MYSQL_PASSWORD: $${MYSQL_PASSWORD}
+      PMA_HOST: $${PMA_HOST}
     ports:
-      - "8004:80"
+      - "8004:443"
     restart: always
     links:
       - database
