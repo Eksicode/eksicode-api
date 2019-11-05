@@ -8,15 +8,15 @@ services:
     env_file:
       - ./eksicode.env
     environment:
-      - MYSQL_ROOT_PASSWORD=$${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=$${MYSQL_ROOT_PASSWORD}
-      - MYSQL_USER=$${MYSQL_USER}
-      - MYSQL_PASSWORD=$${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD:$${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE:$${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER:$${MYSQL_USER}
+      - MYSQL_PASSWORD:$${MYSQL_PASSWORD}
       - TZ=Europe/Istanbul
     networks:
       - eksicode_nw
     healthcheck:
-            test: ["CMD","/usr/bin/mysql", "--user=root", "--password=$${MYSQL_ROOT_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
+            test: ["CMD","/usr/bin/mysql", "--user:root", "--password:$${MYSQL_ROOT_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
             interval: 30s
             timeout: 10s
             retries: 5
@@ -29,12 +29,12 @@ services:
     env_file:
       - ./eksicode.env
     environment:
-      - DB_CONNECTION=$${DB_CONNECTION}
-      - DB_HOST=$${DB_HOST}
-      - DB_PORT=$${DB_PORT}
-      - DB_DATABASE=$${DB_DATABASE}
+      - DB_CONNECTION:$${DB_CONNECTION}
+      - DB_HOST:$${DB_HOST}
+      - DB_PORT:$${DB_PORT}
+      - DB_DATABASE:$${DB_DATABASE}
       - DB_USERNAME=root
-      - DB_PASSWORD=$${MYSQL_ROOT_PASSWORD}
+      - DB_PASSWORD:$${MYSQL_ROOT_PASSWORD}
     links:
       - database
     depends_on:
