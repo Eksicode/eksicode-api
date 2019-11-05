@@ -20,3 +20,5 @@ Proje klasörü içerisinde terminalden aşağıdaki komutu çalıştırın.
 
 docker-compose up --build
 
+
+
