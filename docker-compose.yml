@@ -5,16 +5,12 @@ services:
     image: mysql:5.7.26
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
-    environment:
-      - MYSQL_ROOT_PASSWORD=eksicode
-      - MYSQL_DATABASE=eksicode
-      - MYSQL_USER=eksicode
-      - MYSQL_PASSWORD=eksicode
-      - TZ=Europe/Istanbul
+    env_file:
+      - ./eksicode.env
     networks:
       - eksicode_nw
     healthcheck:
-            test: ["CMD","/usr/bin/mysql", "--user=eksicode", "--password=eksicode", "--execute", "\"SHOW DATABASES;\""]
+            test: ["CMD","/usr/bin/mysql", "--user=$${process.env.DB_USERNAME}", "--password=$${process.env.DB_PASSWORD}", "--execute", "\"SHOW DATABASES;\""]
             interval: 30s
             timeout: 10s
             retries: 5
@@ -24,13 +20,8 @@ services:
     build: ./backend
     volumes:
       - ./backend:/var/www
-    environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=database
-      - DB_PORT=3306
-      - DB_DATABASE=eksicode
-      - DB_USERNAME=root
-      - DB_PASSWORD=eksicode
+    env_file:
+      - ./eksicode.env
     links:
       - database
     depends_on:
@@ -42,10 +33,8 @@ services:
   phpmyadmin:
     container_name: eksicodePma
     image: phpmyadmin/phpmyadmin
-    environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: eksicode
-      PMA_HOST: database
+    env_file:
+      - ./eksicode.env
     ports:
       - "8004"
     restart: always

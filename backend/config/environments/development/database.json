@@ -4,12 +4,12 @@
     "default": {
       "connector": "strapi-hook-bookshelf",
       "settings": {
-        "client": "mysql",
-        "host": "database",
-        "port": 3306,
-        "database": "eksicode",
-        "username": "eksicode",
-        "password": "eksicode"
+        "client": "${process.env.DB_CONNECTION}",
+        "host": "${process.env.DB_HOST}",
+        "port": "${process.env.DB_PORT}",
+        "database": "${process.env.DB_DATABASE}",
+        "username": "${process.env.DB_USERNAME}",
+        "password": "${process.env.DB_PASSWORD}"
       },
       "options": {}
     }
