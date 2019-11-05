@@ -49,6 +49,8 @@ services:
     ports:
       - "8004"
     restart: always
+    volumes:
+      - ./pma.sh:/var/pma.sh
     links:
       - database
     depends_on:
