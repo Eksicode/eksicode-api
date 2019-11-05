@@ -43,7 +43,7 @@ services:
     container_name: eksicodePma
     image: phpmyadmin/phpmyadmin
     environment:
-      MYSQL_USER: eksicode
+      MYSQL_USER: root
       MYSQL_PASSWORD: eksicode
       PMA_HOST: database
     ports:
