@@ -5,8 +5,6 @@ services:
     image: mysql:5.7.26
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
-    env_file:
-      - eksicode.env
     environment:
       - MYSQL_ROOT_PASSWORD=eksicode
       - MYSQL_DATABASE=eksicode
