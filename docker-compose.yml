@@ -5,6 +5,7 @@ services:
     image: mysql:5.7.26
     volumes:
       - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
+      - ./sqlconfig.cnf:/etc/mysql/conf.d/custom.cnf
     env_file:
       - ./eksicode.env
     networks:
