@@ -1,3 +1,4 @@
 eksicode.env
 .env
 node_modules
+/backend/public/uploads

@@ -15,14 +15,6 @@
       "default": "",
       "type": "string"
     },
-    "logo": {
-      "default": "",
-      "type": "string"
-    },
-    "icon": {
-      "default": "",
-      "type": "string"
-    },
     "members": {
       "default": "",
       "type": "integer"
@@ -38,6 +30,12 @@
     "listOrder": {
       "default": "",
       "type": "integer"
+    },
+    "channelIcon": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
   }
 }

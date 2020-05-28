@@ -54,6 +54,14 @@
     "doc_tg_ch": {
       "default": "",
       "type": "string"
+    },
+    "active": {
+      "default": true,
+      "type": "boolean"
+    },
+    "screenshot": {
+      "default": "",
+      "type": "string"
     }
   }
 }
