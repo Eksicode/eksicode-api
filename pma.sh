@@ -1,0 +1,1 @@
+echo "ServerName pma.eksicode.org" >> /etc/apache2/apache2.conf

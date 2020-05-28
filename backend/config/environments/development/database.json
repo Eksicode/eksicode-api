@@ -1,0 +1,17 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-bookshelf",
+      "settings": {
+        "client": "${process.env.DB_CONNECTION}",
+        "host": "${process.env.DB_HOST}",
+        "port": "${process.env.DB_PORT}",
+        "database": "${process.env.DB_DATABASE}",
+        "username": "root",
+        "password": "${process.env.MYSQL_ROOT_PASSWORD}"
+      },
+      "options": {}
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "menus",
+  "info": {
+    "name": "menu",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "menu_name": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

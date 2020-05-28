@@ -1,0 +1,41 @@
+{
+  "connection": "default",
+  "collectionName": "telegrams",
+  "info": {
+    "name": "telegram",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "members": {
+      "default": "",
+      "type": "integer"
+    },
+    "link": {
+      "default": "",
+      "type": "string"
+    },
+    "channelID": {
+      "default": "",
+      "type": "string"
+    },
+    "listOrder": {
+      "default": "",
+      "type": "integer"
+    },
+    "channelIcon": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

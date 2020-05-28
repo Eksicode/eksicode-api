@@ -1,0 +1,6 @@
+eksicode.env
+eksicode.key
+eksicode.crt
+.env
+node_modules
+/backend/public/uploads

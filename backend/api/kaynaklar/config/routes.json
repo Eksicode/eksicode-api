@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/kaynaklars",
+      "handler": "Kaynaklar.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kaynaklars/count",
+      "handler": "Kaynaklar.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/kaynaklars/:id",
+      "handler": "Kaynaklar.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/kaynaklars",
+      "handler": "Kaynaklar.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/kaynaklars/:id",
+      "handler": "Kaynaklar.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/kaynaklars/:id",
+      "handler": "Kaynaklar.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

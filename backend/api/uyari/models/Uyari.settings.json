@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "uyaris",
+  "info": {
+    "name": "uyari",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "user_name": {
+      "default": "",
+      "type": "string"
+    },
+    "user_id": {
+      "default": "",
+      "type": "string"
+    },
+    "reason": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

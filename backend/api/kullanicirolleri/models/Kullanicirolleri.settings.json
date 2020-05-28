@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "kullanicirolleris",
+  "info": {
+    "name": "kullanicirolleri",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "role_name": {
+      "default": "",
+      "type": "string"
+    },
+    "role_rights": {
+      "default": "",
+      "type": "integer"
+    }
+  }
+}

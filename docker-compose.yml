@@ -1,0 +1,72 @@
+version: '3'
+services:
+  database:
+    container_name: eksicodeDatabase
+    image: mysql:5.7.26
+    volumes:
+      - ./db/eksicode.sql:/docker-entrypoint-initdb.d/eksicode.sql
+      - ./sqlconfig.cnf:/etc/mysql/conf.d/custom.cnf
+    env_file:
+      - ./eksicode.env
+    networks:
+      - eksicode_nw
+
+  backend:
+    container_name: eksicodeBackend
+    build: ./backend
+    volumes:
+      - ./backend:/var/www
+    env_file:
+      - ./eksicode.env
+    links:
+      - database
+    depends_on:
+      - database
+    restart: on-failure
+    networks:
+      - eksicode_nw
+
+  phpmyadmin:
+    container_name: eksicodePma
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - ./eksicode.env
+    ports:
+      - "8004"
+    restart: always
+    volumes:
+      - ./pma.sh:/var/pma.sh
+    links:
+      - database
+    depends_on:
+      - database
+    networks:
+      - eksicode_nw
+
+  web:
+    container_name: eksicodeWeb
+    image: nginx:alpine
+    environment:
+      - TZ=Europe/Istanbul
+      - PROTOCOL=HTTP
+    privileged: true
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/eksicode.crt:/etc/nginx/conf.d/eksicode.crt
+      - ./nginx/eksicode.key:/etc/nginx/conf.d/eksicode.key
+      - /home/eksicode-frontend/build:/var/www/html
+    restart: on-failure
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - eksicode_nw
+
+volumes:
+  database:
+  backend:
+  web:
+  phpmyadmin:
+
+networks:
+  eksicode_nw:

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/uyaris",
+      "handler": "Uyari.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/uyaris/count",
+      "handler": "Uyari.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/uyaris/:id",
+      "handler": "Uyari.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/uyaris",
+      "handler": "Uyari.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/uyaris/:id",
+      "handler": "Uyari.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/uyaris/:id",
+      "handler": "Uyari.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
