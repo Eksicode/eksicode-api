@@ -29,7 +29,7 @@
     "strapi-hook-knex": "3.0.0-alpha.24.1",
     "strapi-utils": "3.0.0-alpha.24.1",
     "telegraf": "^3.27.1",
-    "strapi-plugin-content-manager": "3.0.0-alpha.24.1",
+    "strapi-plugin-content-manager": "3.2.5",
     "strapi-plugin-content-type-builder": "3.0.0-alpha.24.1",
     "strapi-plugin-email": "3.0.0-alpha.24.1",
     "strapi-plugin-settings-manager": "3.0.0-alpha.24.1",
